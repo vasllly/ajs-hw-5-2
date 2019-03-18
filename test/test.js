@@ -1,5 +1,40 @@
-test('test', () => {
-  const received = 1 + 1;
-  const expected = 2;
-  expect(received).toBe(expected);
+import findBy from '../src/js/script';
+
+const DB = [
+  { name: 'маг', type: 'character', description: 'Персонаж, обладающий магическими способностями' },
+  { name: 'заклинание', type: 'attack', description: 'Атака магическим заклинанием' },
+  { name: 'урон', type: 'help', description: 'Страница описания элемента интерфейса' },
+];
+
+test('test 1', () => {
+  const finder = findBy('name', 'урон');
+  const received = DB.filter(finder);
+  const expected = [{
+    name: 'урон',
+    type: 'help',
+    description: 'Страница описания элемента интерфейса',
+  }];
+  expect(received).toEqual(expected);
+});
+
+test('test 2', () => {
+  const finder = findBy('type', 'character');
+  const received = DB.filter(finder);
+  const expected = [{
+    name: 'маг',
+    type: 'character',
+    description: 'Персонаж, обладающий магическими способностями',
+  }];
+  expect(received).toEqual(expected);
+});
+
+test('test 3', () => {
+  const finder = findBy('description', 'Атака магическим заклинанием');
+  const received = DB.filter(finder);
+  const expected = [{
+    name: 'заклинание',
+    type: 'attack',
+    description: 'Атака магическим заклинанием',
+  }];
+  expect(received).toEqual(expected);
 });
