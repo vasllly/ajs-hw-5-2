@@ -1,4 +1,4 @@
-import findBy from '../src/js/script';
+import findBy from '../src/js/findBy';
 
 const DB = [
   { name: 'маг', type: 'character', description: 'Персонаж, обладающий магическими способностями' },
@@ -36,5 +36,26 @@ test('test 3', () => {
     type: 'attack',
     description: 'Атака магическим заклинанием',
   }];
+  expect(received).toEqual(expected);
+});
+
+test('test 4', () => {
+  const finder = findBy('page', 'Атака магическим заклинанием');
+  const received = DB.filter(finder);
+  const expected = [];
+  expect(received).toEqual(expected);
+});
+
+test('test 4', () => {
+  const finder = findBy('name', 'снаряжение');
+  const received = DB.filter(finder);
+  const expected = [];
+  expect(received).toEqual(expected);
+});
+
+test('test 4', () => {
+  const finder = findBy('name', 'снаряжение');
+  const received = [].filter(finder);
+  const expected = [];
   expect(received).toEqual(expected);
 });
